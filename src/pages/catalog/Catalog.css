@@ -427,19 +427,80 @@
     margin-top: 14px;
   }
 
+  /* ✅ 980 dan pastda layout 1 ustun bo'ladi (side ham pastga tushadi) */
   .catalog-grid{
     grid-template-columns: 1fr;
   }
 
-  .cards{ grid-template-columns: 1fr; }
+  .nav-modalClose{
+  color: var(--ink);           /* ✅ X ko‘k bo‘lib qolmasin */
+  -webkit-appearance: none;    /* ✅ iOS default style’ni o‘chiradi */
+  appearance: none;
+}
+
+.nav-modalClose svg{
+  color: inherit;              /* ✅ icon currentColor’dan oladi */
+}
+
+
+  /* ✅ 980-501 oralig'ida 1 ta bo'lib tursa ham mayli (siz faqat 500px dedingiz) */
+  .cards{
+    grid-template-columns: 1fr;
+  }
+  .filtersMobile{
+    display: none;
+  }
+  .pimg .pbadge{
+    display: none;
+  }
 }
 
 @media (max-width: 560px){
   .catalog-title{ font-size:30px; }
   .toolSearch{ height:48px; }
-
-  .pimg{ height: 155px; }
+  .filtersMobile{
+    display: none;
+  }
+  .pimg .pbadge{
+    display: none;
+  }
 }
+
+/* ✅ SIZ SO'RAGAN: 500px da 2 tadan + side-card pastga (productsdan keyin) */
+@media (max-width: 500px){
+
+  /* ✅ desktop o'zgarmaydi, faqat mobile order */
+  .catalog-grid{
+    grid-template-columns: 1fr; /* bitta ustun */
+  }
+
+  /* ✅ avval products (content), keyin side-card */
+  .content{ order: 1; }
+  .side{ order: 2; }
+
+  /* ✅ products grid: 2 ustun */
+  .cards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  /* ✅ ichki matnlar ham “akkurat” bo'lsin */
+  .pcardBody{ padding: 10px; }
+  .ptitle{ font-size: 13px; margin-bottom: 10px; }
+  .btnGhost{
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .filtersMobile{
+    display: none;
+  }
+  .pimg .pbadge{
+    display: none;
+  }
+}
+
 
 
 

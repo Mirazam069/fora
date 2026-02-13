@@ -365,6 +365,17 @@
   font-size: 22px;
 }
 
+
+.nav-modalClose{
+  color: var(--ink);           /* ✅ X ko‘k bo‘lib qolmasin */
+  -webkit-appearance: none;    /* ✅ iOS default style’ni o‘chiradi */
+  appearance: none;
+}
+
+.nav-modalClose svg{
+  color: inherit;              /* ✅ icon currentColor’dan oladi */
+}
+
 .nav-modalBody {
   padding: 16px;
 }
