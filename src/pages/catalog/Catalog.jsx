@@ -271,65 +271,65 @@ export default function Catalog() {
                         </div> */}
 
                         <button
-          type="button"
-          className="btnGhost"
-          onClick={() => setContactOpen(true)}
-        >
-          Batafsil
-        </button>
+                          type="button"
+                          className="btnGhost"
+                          onClick={() => setContactOpen(true)}
+                        >
+                          Batafsil
+                        </button>
 
 
                         <AnimatePresence>
-          {contactOpen && (
-            <motion.div
-              className="nav-modalOverlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onMouseDown={(e) => {
-                if (e.target === e.currentTarget) setContactOpen(false);
-              }}
-            >
-              <motion.div
-                className="nav-modal"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Bog‘lanish oynasi"
-                initial={{ opacity: 0, y: 18, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 18, scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="nav-modalTop">
-                  <div className="nav-modalTitle">Bog‘lanish</div>
-                  <button
-                    type="button"
-                    className="nav-modalClose"
-                    onClick={() => setContactOpen(false)}
-                    aria-label="Close"
-                  >
-                    <IoCloseOutline />
-                  </button>
-                </div>
+                          {contactOpen && (
+                            <motion.div
+                              className="nav-modalOverlay"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              onMouseDown={(e) => {
+                                if (e.target === e.currentTarget) setContactOpen(false);
+                              }}
+                            >
+                              <motion.div
+                                className="nav-modal"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label="Bog‘lanish oynasi"
+                                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 18, scale: 0.98 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <div className="nav-modalTop">
+                                  <div className="nav-modalTitle">Bog‘lanish</div>
+                                  <button
+                                    type="button"
+                                    className="nav-modalClose"
+                                    onClick={() => setContactOpen(false)}
+                                    aria-label="Close"
+                                  >
+                                    <IoCloseOutline />
+                                  </button>
+                                </div>
 
-                <div className="nav-modalBody">
-                  <p className="nav-modalText">
-                    Buyurtma uchun qo‘ng‘iroq qiling:
-                  </p>
+                                <div className="nav-modalBody">
+                                  <p className="nav-modalText">
+                                    Buyurtma uchun qo‘ng‘iroq qiling:
+                                  </p>
 
-                  <div className="nav-phones">
-                    <a className="nav-phone" href="tel:+998992000077">
-                      +998 99 200 00 77
-                    </a>
-                    <a className="nav-phone" href="tel:+998992000033">
-                      +998 99 200 00 33
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                                  <div className="nav-phones">
+                                    <a className="nav-phone" href="tel:+998992000077">
+                                      +998 99 200 00 77
+                                    </a>
+                                    <a className="nav-phone" href="tel:+998992000033">
+                                      +998 99 200 00 33
+                                    </a>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
 
 
 

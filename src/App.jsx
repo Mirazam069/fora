@@ -14,8 +14,9 @@ import Contact from "./pages/contact/Contact";
 import Warranty from "./pages/warranty/Warranty";
 
 import ScrollToTop from "./components/ScrollToTop";
+import { ContactModalProvider } from "./context/ContactModalContext";
 
-import { Routes, Route } from "react-router-dom"; // ✅ ADD
+import { Routes, Route } from "react-router-dom";
 
 function Home() {
   return (
@@ -24,7 +25,7 @@ function Home() {
       <About />
       <Products />
       <WhyChoose />
-      <Hamkorlar/>
+      <Hamkorlar />
       <CTAForm />
     </>
   );
@@ -32,7 +33,7 @@ function Home() {
 
 function App() {
   return (
-    <div>
+    <ContactModalProvider> {/* ✅ BUTUN APP NI O‘RAYDI */}
       <Navbar />
       <ScrollToTop />
 
@@ -45,7 +46,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </div>
+    </ContactModalProvider>
   );
 }
 

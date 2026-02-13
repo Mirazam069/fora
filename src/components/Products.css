@@ -205,3 +205,133 @@
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+/* MODAL */
+.btnGhost{
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgba(11, 18, 32, 0.52);
+}
+.nav-modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(11, 18, 32, 0.52);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.nav-modal {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.nav-modalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+}
+
+.nav-modalTitle {
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.nav-modalClose {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.nav-modalBody {
+  padding: 16px;
+}
+
+.nav-modalText {
+  margin: 0 0 10px;
+  color: rgba(11, 18, 32, 0.75);
+  font-weight: 700;
+}
+
+.nav-phones {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.nav-phone {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 900;
+  padding: 14px 14px;
+  border-radius: var(--radius);
+  background: var(--soft);
+  border: 1px solid var(--stroke);
+}
+
+.nav-phone:hover {
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(11, 18, 32, 0.10);
+}
+
+
+/* CARD FLEX STRUCTURE */
+.product-card{
+  background: #fff;
+  border: 1px solid rgba(11,18,32,.10);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15,23,42,.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-body{
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-foot{
+  margin-top: auto; /* ✅ doimo pastda */
+}
+
+/* BUYUTMA BUTTON */
+.product-btn{
+  border: none;
+  background: #0b1220;   /* qora */
+  color: #fff;           /* oq */
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: 100%;
+}
+
+.product-btn:hover{
+  background: #000;
+  transform: translateY(-2px);
+}
