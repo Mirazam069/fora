@@ -1,0 +1,618 @@
+/* src/components/common/Navbar.css */
+
+:root {
+  --brand-yellow: #ffea00;
+  --ink: #0b1220;
+  --muted: rgba(11, 18, 32, 0.62);
+  --stroke: rgba(11, 18, 32, 0.12);
+  --bg: #ffffff;
+  --soft: rgba(11, 18, 32, 0.04);
+
+  /* universal radius */
+  --radius: 15px;
+
+  /* layout */
+  --container: 1440px;
+}
+
+*{
+  font-weight: 500;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.nav-shell {
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+  padding: 10px 40px 8px;
+}
+
+/* 1-QATOR */
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* LOGO */
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-logoImg {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-logoImg--sm {
+  width: 70px;
+  height: 70px;
+}
+
+/* SEARCH */
+.nav-search {
+  flex: 1;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  background: var(--soft);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+}
+
+.nav-searchIcon {
+  color: rgba(11, 18, 32, 0.55);
+  font-size: 18px;
+}
+
+.nav-searchInput {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.nav-searchInput::placeholder {
+  color: rgba(11, 18, 32, 0.45);
+}
+
+/* ACTIONS */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* KATALOG */
+.nav-catWrap {
+  position: relative;
+  z-index: 50;
+}
+
+.nav-catBtn {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 15px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.nav-catBtn.is-open {
+  box-shadow: 0 12px 28px rgba(11, 18, 32, 0.10);
+}
+
+.nav-catIcon {
+  font-size: 18px;
+  color: rgba(11, 18, 32, 0.72);
+}
+
+.nav-catChevron {
+  display: inline-flex;
+  font-size: 16px;
+  color: rgba(11, 18, 32, 0.55);
+}
+
+/* DROPDOWN */
+.nav-catDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  width: min(920px, 86vw);
+  background-color: #fff;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 60px rgba(11, 18, 32, 0.16);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.nav-catDropdown--right {
+  right: 0;
+  left: auto;
+}
+
+.nav-catTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+}
+
+.nav-catTitle {
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.nav-catClose {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.nav-catCols {
+  padding: 14px 16px 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.nav-catCol {
+  display: grid;
+  gap: 10px;
+}
+
+.nav-catItem {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.nav-catItem:hover {
+  background: var(--soft);
+  border-color: rgba(11, 18, 32, 0.10);
+}
+
+/* CONTACT */
+.nav-contactBtn {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 15px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.nav-contactIcon {
+  font-size: 18px;
+  color: #111;
+}
+
+/* BURGER */
+.nav-burger {
+  display: none;
+  width: 46px;
+  height: 44px;
+  border-radius: 15px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  cursor: pointer;
+  place-items: center;
+  font-size: 22px;
+  color: rgba(11, 18, 32, 0.78);
+}
+
+/* =========================
+   2-QATOR: SUBNAV (rasmdagi kabi)
+========================= */
+
+.nav-sub {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 8px;
+  margin-bottom: 20px;
+}
+
+.nav-subLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-subLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+  opacity: 0.92;
+  transition: 0.2s ease;
+}
+
+.nav-subLink:hover {
+  opacity: 1;
+}
+
+.nav-subLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--ink);
+  transition: width 0.25s ease;
+}
+
+.nav-subLink:hover::after {
+  width: 100%;
+}
+
+.nav-subLink.active::after {
+  width: 100%;
+}
+
+.nav-divider {
+  width: 2px;
+  height: 22px;
+  background: var(--ink);
+  opacity: 0.16;
+}
+
+/* Focus */
+.nav-search:focus-within {
+  border: 1px solid #000;
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-searchInput:focus,
+.nav-searchInput:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* MODAL */
+.nav-modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(11, 18, 32, 0.52);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.nav-modal {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.nav-modalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+}
+
+.nav-modalTitle {
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.nav-modalClose {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.nav-modalBody {
+  padding: 16px;
+}
+
+.nav-modalText {
+  margin: 0 0 10px;
+  color: rgba(11, 18, 32, 0.75);
+  font-weight: 700;
+}
+
+.nav-phones {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.nav-phone {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 900;
+  padding: 14px 14px;
+  border-radius: var(--radius);
+  background: var(--soft);
+  border: 1px solid var(--stroke);
+}
+
+.nav-phone:hover {
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(11, 18, 32, 0.10);
+}
+
+/* MOBILE FULLSCREEN */
+.nav-mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  background: rgba(11, 18, 32, 0.55);
+}
+
+.nav-mobile {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nav-mobileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-mobileClose {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.nav-mobileSearch {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  background: var(--soft);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+}
+
+.nav-mobileSection {
+  flex: 1;
+  overflow: auto;
+  border-radius: var(--radius);
+  border: 1px solid rgba(11, 18, 32, 0.10);
+  background: #fff;
+  padding: 14px;
+}
+
+.nav-mobileTitle {
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.nav-mobileCats {
+  display: grid;
+  gap: 10px;
+}
+
+.nav-mobileCat {
+  width: 100%;
+  text-align: left;
+  padding: 12px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: var(--soft);
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.nav-mobileBottom {
+  padding-top: 6px;
+}
+
+.nav-contactBtn--full {
+  width: 100%;
+  justify-content: center;
+  height: 52px;
+}
+
+/* =========================
+   RESPONSIVE (only media)
+   talab: logo 980dan keyin kichraymasin
+========================= */
+
+/* <= 980px : logo + search + burger */
+@media (max-width: 980px) {
+  .nav-shell {
+    padding: 10px 16px 8px;
+  }
+
+  /* Katalog va Aloqa desktop actionlari yashirin */
+  .nav-catWrap,
+  .nav-contactBtn {
+    display: none;
+  }
+
+  /* Burger chiqadi */
+  .nav-burger {
+    display: grid;
+  }
+
+  /* ✅ MUHIM: logo kichraymaydi */
+  .nav-logoImg {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* subnav mobile’da yo‘q */
+  .nav-sub {
+    display: none;
+  }
+}
+
+/* <= 560px : search biroz ixcham */
+@media (max-width: 560px) {
+  .nav-row {
+    gap: 10px;
+  }
+
+  .nav-search {
+    height: 48px;
+    border-radius: 18px;
+    padding: 0 12px;
+  }
+
+  .nav-searchInput {
+    font-size: 13px;
+  }
+
+  .nav-burger {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* <= 430px : logo + aloqa + burger (search yo‘q) */
+@media (max-width: 430px) {
+  .nav-shell {
+    padding: 10px 12px 8px;
+  }
+
+  /* searchni olib tashlaymiz */
+  .nav-search {
+    display: none;
+  }
+
+  /* Aloqa qaytadi (faqat shu breakpointda) */
+  .nav-contactBtn {
+    display: inline-flex;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 15px;
+    font-size: 15px;
+  }
+
+  .nav-contactBtn .nav-contactIcon {
+    font-size: 18px;
+  }
+
+  /* Katalog baribir yashirin (burger orqali) */
+  .nav-catWrap {
+    display: none;
+  }
+
+  /* logo kichraymaydi */
+  .nav-logoImg {
+    width: 90px;
+    height: 90px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+  .nav-row{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* <= 360px : eng kichik ekranlar (hammasi sig‘sin) */
+@media (max-width: 360px) {
+  .nav-shell {
+    padding: 10px 10px 8px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-contactBtn {
+    height: 42px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .nav-burger {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  /* logo baribir kichraymaydi (talab bo‘yicha) */
+  .nav-logoImg {
+    width: 90px;
+    height: 90px;
+  }
+}

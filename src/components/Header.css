@@ -1,0 +1,207 @@
+/* src/components/common/Hero.css */
+
+:root {
+  --brand-yellow: #ffea00;
+  --ink: #0b1220;
+  --muted: rgba(11, 18, 32, 0.62);
+  --stroke: rgba(11, 18, 32, 0.12);
+  --bg: #ffffff;
+  --soft: rgba(11, 18, 32, 0.04);
+
+  /* universal radius */
+  --radius: 15px;
+
+  /* layout */
+  --container: 1440px;
+}
+
+/* =========================
+   HERO (MINIMAL + ROLLING WORD)
+========================= */
+
+.hero {
+  padding: 140px 40px 120px;
+  background: transparent; /* grid global bo‘lsa */
+  position: relative;
+}
+
+.hero-inner {
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Brand */
+.hero-brand {
+  display: inline-block;
+  margin-bottom: 22px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Title */
+.hero-title {
+  margin: 0 0 18px;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -3.8px;
+}
+
+/* ✅ Roller inline wrapper */
+.hero-roller {
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+/* ✅ Mask: em bilan (font-size o‘zgarsa ham kesilmaydi) */
+.hero-rollerMask {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  /* MUHIM: bu height font-size ga bog‘liq bo‘ladi */
+  height: 1.15em;         /* ✅ kesilmaydi */
+  padding: 0.12em 0;      /* ✅ tepasi/pastiga “nafas” */
+
+  width: min(500px, 58vw);
+  max-width: 500px;
+}
+
+/* ✅ Word: translateY(-50%) yo‘q, flex bilan center */
+.hero-rollerWord {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--brand-yellow);
+  font-weight: 900;
+  line-height: 1.01;      /* ✅ font metrikasi uchun */
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Subtitle */
+.hero-sub {
+  margin: 0 auto 36px;
+  max-width: 980px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Actions */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  text-decoration: none;
+
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+
+.hero-btn--ghost {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .hero {
+    padding: 110px 20px 90px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .hero-rollerMask {
+    height: 68px;
+    width: min(680px, 70vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-rollerMask {
+    height: 62px;
+    width: min(640px, 74vw);
+  }
+
+  .hero-sub {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: 50px 16px 80px;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    line-height: 1.18;
+  }
+
+  /* mobil: roller alohida qator bo‘lsin */
+  .hero-roller {
+    display: block;
+    margin: 10px auto 0;
+  }
+
+  .hero-rollerMask {
+    height: 25px;
+    width: min(520px, 92vw);
+    font-size: 30px;
+    line-height: 2px;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 420px;
+  }
+}

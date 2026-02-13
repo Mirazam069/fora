@@ -1,0 +1,168 @@
+/* src/pages/warranty/Warranty.css */
+
+.wr{
+  min-height: 80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 40px 0;
+}
+
+.wr-shell{
+  width: min(1440px, 100%);
+  padding: 0 40px;
+}
+
+@media (max-width:560px){
+  .wr-shell{ padding: 0 16px; }
+}
+
+.wr-card{
+  width: min(860px, 100%);
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(11,18,32,.10);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(15,23,42,.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle neutral highlight (no blue/yellow) */
+.wr-card::before{
+  content:"";
+  position:absolute;
+  inset:-90px -130px auto -130px;
+  height: 200px;
+  pointer-events:none;
+}
+
+.wr-top{
+  position: relative;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.wr-title{
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  color: #0b1220;
+}
+
+.wr-sub{
+  margin: 10px auto 0;
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(11,18,32,.68);
+}
+
+.wr-grid{
+  position: relative;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.wr-item{
+  border: 1px solid rgba(11,18,32,.10);
+  background: rgba(11,18,32,.02);
+  border-radius: 16px;
+  padding: 16px 14px;
+}
+
+.wr-k{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(11,18,32,.72);
+  margin-bottom: 6px;
+}
+
+.wr-v{
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.55;
+  color: rgba(11,18,32,.78);
+}
+
+.wr-note{
+  margin-top: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(11,18,32,.10);
+  background: #fff;
+  padding: 16px 14px;
+}
+
+.wr-noteTitle{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(11,18,32,.72);
+  margin-bottom: 6px;
+}
+
+.wr-noteText{
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.55;
+  color: rgba(11,18,32,.78);
+}
+
+.wr-foot{
+  margin-top: 18px;
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wr-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(11,18,32,.10);
+  background: #0b1220;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.wr-btn:hover{
+  transform: translateY(-2px);
+}
+
+.wr-btnGhost{
+  background: #ffffff;
+  color: #0b1220;
+}
+
+@media (max-width: 760px){
+  .wr-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px){
+  .wr-card{
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .wr-title{ font-size: 28px; }
+  .wr-sub{ font-size: 13px; }
+
+  .wr-v{ font-size: 13px; }
+  .wr-btn{ height: 44px; font-size: 12px; }
+}

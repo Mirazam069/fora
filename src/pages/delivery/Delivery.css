@@ -1,0 +1,304 @@
+/* src/pages/delivery/Delivery.css */
+
+.dlv{
+  min-height: 80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 40px 0;
+}
+
+.dlv-shell{
+  width: min(1440px, 100%);
+  padding: 0 40px;
+}
+
+@media (max-width:560px){
+  .dlv-shell{ padding: 0 16px; }
+}
+
+.dlv-card{
+  width: min(980px, 100%);
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(11,18,32,.10);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(15,23,42,.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.dlv-card::before{
+  content:"";
+  position:absolute;
+  inset:-90px -130px auto -130px;
+  height: 200px;
+  pointer-events:none;
+}
+
+.dlv-top{
+  position: relative;
+  text-align:center;
+  margin-bottom: 18px;
+}
+
+.dlv-title{
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  color:#0b1220;
+}
+
+.dlv-sub{
+  margin: 10px auto 0;
+  max-width: 680px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(11,18,32,.68);
+}
+
+/* ROADMAP */
+.dlv-roadmap{
+  position: relative;
+  margin-top: 18px;
+  display:flex;
+  flex-direction: column;
+}
+
+.dlv-step{
+  position: relative;
+  display:flex;
+  gap: 14px;
+  align-items:flex-start;
+  padding: 14px 0;
+}
+
+.dlv-step--left{ justify-content:flex-start; }
+.dlv-step--right{ justify-content:flex-end; }
+
+.dlv-badge{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(11,18,32,.12);
+  background: rgba(11,18,32,.02);
+  color: rgba(11,18,32,.92);
+  flex: 0 0 auto;
+}
+
+.dlv-badge svg{ font-size: 20px; }
+
+.dlv-body{
+  width: min(520px, 100%);
+  border: 1px solid rgba(11,18,32,.10);
+  background: rgba(11,18,32,.02);
+  border-radius: 16px;
+  padding: 14px 14px;
+}
+
+.dlv-k{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(11,18,32,.70);
+  margin-bottom: 6px;
+}
+
+.dlv-v{
+  font-size: 16px;
+  font-weight: 900;
+  color:#0b1220;
+  margin-bottom: 6px;
+}
+
+.dlv-t{
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.55;
+  color: rgba(11,18,32,.78);
+}
+
+/* ✅ NEW: CURVED ARROWS (qizilda chizgandek) */
+.dlv-curveWrap{
+  position: relative;
+  height: 64px;
+  display:flex;
+  align-items:center;
+  pointer-events: none;
+  color: rgba(11,18,32,.18);
+}
+
+.dlv-curveWrap--right{
+  justify-content: flex-end;
+  padding-right: 24px;
+}
+
+.dlv-curveWrap--left{
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.dlv-curve{
+  width: 220px;
+  height: 120px;
+  display:block;
+  filter: drop-shadow(0 10px 20px rgba(15,23,42,.06));
+}
+
+.dlv-curveWrap--left .dlv-curve{
+  transform: scaleX(-1); /* chapga burish (mirror) */
+}
+
+/* mini info */
+.dlv-mini{
+  position: relative;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.dlv-miniItem{
+  border: 1px solid rgba(11,18,32,.10);
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 14px;
+}
+
+.dlv-miniT{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(11,18,32,.70);
+  margin-bottom: 6px;
+}
+
+.dlv-miniV{
+  font-size: 14px;
+  font-weight: 850;
+  color:#0b1220;
+}
+
+/* footer btns */
+.dlv-foot{
+  margin-top: 16px;
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dlv-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(11,18,32,.10);
+  background: #0b1220;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.dlv-btn:hover{ transform: translateY(-2px); }
+
+.dlv-btnGhost{
+  background: #fff;
+  color:#0b1220;
+}
+
+/* responsive */
+@media (max-width: 860px){
+  .dlv-body{ width: min(640px, 100%); }
+  .dlv-curve{ width: 180px; }
+}
+
+@media (max-width: 680px){
+  .dlv-step--right,
+  .dlv-step--left{
+    justify-content: flex-start;
+  }
+
+  .dlv-curveWrap--right,
+  .dlv-curveWrap--left{
+    justify-content: flex-start;
+    padding-left: 8px;
+    padding-right: 0;
+    height: 50px;
+  }
+
+  .dlv-curve{ width: 150px; }
+  .dlv-mini{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px){
+  .dlv-card{
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .dlv-title{ font-size: 28px; }
+  .dlv-sub{ font-size: 13px; }
+  .dlv-v{ font-size: 15px; }
+  .dlv-t{ font-size: 13px; }
+
+  .dlv-badge{
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .dlv-badge svg{ font-size: 18px; }
+  .dlv-btn{ height: 44px; font-size: 12px; }
+
+  .dlv-curve{ width: 135px; }
+}
+
+
+
+
+
+
+/* ✅ “keyingisi” animatsiya: pulse + flow */
+.dlv-curveWrap{
+  animation: dlvPulse 1.35s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* arrow base (oddiy chiziq) */
+.dlv-curvePath{
+  opacity: .85;
+}
+
+/* arrow highlight (dash flow) */
+.dlv-curvePathFlow{
+  opacity: .95;
+  stroke-dasharray: 10 14;     /* segmentlar */
+  stroke-dashoffset: 0;
+  animation: dlvFlow 1.25s linear infinite;
+  filter: drop-shadow(0 10px 20px rgba(15,23,42,.06));
+}
+
+/* “nafas olishi” — mayin kimillash */
+@keyframes dlvPulse{
+  0%   { opacity: .45; transform: translateY(0) scale(1); }
+  50%  { opacity: .85; transform: translateY(-2px) scale(1.02); }
+  100% { opacity: .45; transform: translateY(0) scale(1); }
+}
+
+/* chiziq bo‘ylab highlight yurishi */
+@keyframes dlvFlow{
+  to { stroke-dashoffset: -48; }
+}
