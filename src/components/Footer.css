@@ -225,4 +225,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .iii{
+    display: none;
+  }
 }

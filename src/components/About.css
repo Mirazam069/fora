@@ -467,9 +467,12 @@
 
 @media (max-width: 560px){
   .about-hero{ padding: 90px 0 50px; }
-  .about-title{ font-size: 30px; line-height: 1.18; }
+  .about-title{ font-size: 30px; line-height: 1.18; letter-spacing: -1px;}
   .about-sub{ font-size: 13px; }
   .about-miniStats{ grid-template-columns: 1fr; }
   .about-cards{ grid-template-columns: 1fr; }
   .ctaBtn{ width: 100%; }
+  .about-heroRow{
+    display: none;
+  }
 }

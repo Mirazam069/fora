@@ -138,9 +138,6 @@ export default function CTAForm() {
                   ease: "easeInOut",
                 }}
               >
-                <span className="cta-ico" aria-hidden="true">
-                  <IoSendOutline />
-                </span>
                 <span>{loading ? "YUBORILMOQDA..." : "YUBORISH"}</span>
               </motion.button>
             </form>

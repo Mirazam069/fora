@@ -186,14 +186,13 @@
     gap: 12px;
   }
 
-  .product-imgWrap{ height: 130px; }
 
   .product-body{ padding: 10px 10px 10px; }
 
   .product-cat{ font-size: 10px; margin-bottom: 5px; }
   .product-name{ font-size: 13px; margin-bottom: 8px; }
 
-  .product-price{ font-size: 12px; }
+  .product-price{ display: none; }
   .product-unit{ font-size: 11px; }
 
   .product-actions{ gap: 6px; }
@@ -201,5 +200,8 @@
     padding: 8px 8px;
     font-size: 10px;
     border-radius: 10px;
+  }
+  .product-btn--ghost{
+    display: none;
   }
 }

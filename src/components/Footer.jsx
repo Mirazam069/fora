@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="footer-col">
+          <div className="footer-col iii">
             <div className="footer-title">MENYU</div>
             <nav className="footer-links">
               <a href="/" className="footer-link">
@@ -57,7 +57,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="footer-col">
+          <div className="footer-col iii">
             <div className="footer-title">KATEGORIYALAR</div>
             <div className="footer-links">
               <a href="/catalog" className="footer-link">

@@ -156,6 +156,7 @@
   background: var(--brand-yellow);
   color: #000;
   border-color: rgba(0, 0, 0, 0.14);
+  font-weight: 500;
 }
 
 .cta-btn:disabled {
