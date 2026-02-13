@@ -179,7 +179,8 @@
 
   .hero-title {
     font-size: 30px;
-    line-height: 1.18;
+    line-height: 1;
+    letter-spacing: -2.6px;
   }
 
   /* mobil: roller alohida qator bo‘lsin */
@@ -189,9 +190,9 @@
   }
 
   .hero-rollerMask {
-    height: 25px;
+    height: 40px;
     width: min(520px, 92vw);
-    font-size: 30px;
+    font-size: 40px;
     line-height: 2px;
   }
 
