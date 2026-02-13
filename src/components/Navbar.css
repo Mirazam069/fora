@@ -371,6 +371,15 @@
   -webkit-appearance: none;    /* ✅ iOS default style’ni o‘chiradi */
   appearance: none;
 }
+.nav-mobileClose{
+  color: var(--ink);           /* ✅ X ko‘k bo‘lib qolmasin */
+  -webkit-appearance: none;    /* ✅ iOS default style’ni o‘chiradi */
+  appearance: none;
+}
+.nav-mobileClose svg{
+  color: inherit;
+}
+
 
 .nav-modalClose svg{
   color: inherit;              /* ✅ icon currentColor’dan oladi */
