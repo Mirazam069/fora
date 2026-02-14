@@ -18,6 +18,7 @@ import Warranty from "./pages/warranty/Warranty";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { ContactModalProvider } from "./context/ContactModalContext";
+import { LanguageProvider } from "./context/LanguageContext";
 import BackgroundFX from "./components/background/BackgroundFX";
 
 import { Routes, Route } from "react-router-dom";
@@ -37,35 +38,37 @@ function Home() {
 
 function App() {
   return (
-    <ContactModalProvider>
-      {/* 🔥 Background effect - butun sayt orqasida */}
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: "none"
-        }}
-      >
-        <BackgroundFX />
-      </div>
+    <LanguageProvider>
+      <ContactModalProvider>
+        {/* 🔥 Background effect - butun sayt orqasida */}
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none"
+          }}
+        >
+          <BackgroundFX />
+        </div>
 
-      {/* 🔹 Asosiy kontent */}
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <Navbar />
-        <ScrollToTop />
+        {/* 🔹 Asosiy kontent */}
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <Navbar />
+          <ScrollToTop />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/delivery" element={<Delivery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/warranty" element={<Warranty />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/delivery" element={<Delivery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/warranty" element={<Warranty />} />
+          </Routes>
 
-        <Footer />
-      </div>
-    </ContactModalProvider>
+          <Footer />
+        </div>
+      </ContactModalProvider>
+    </LanguageProvider>
   );
 }
 

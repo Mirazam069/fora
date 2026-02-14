@@ -86,57 +86,57 @@ export const PRODUCTS = [
   { id: "p3", title: "WEIMA WM1000N motokultivator", price: 1750000, unit: "dona", image: img3, category: "Kultivatorlar" },
 
 
-  { id: "p4", title: "Fora Group payalnik", price: 6900000, unit: "dona", image: img4, category: "Po‘lat prut kesish stanoklari" },
-  { id: "p5", title: "Fora Group professional payalnik", price: 315000000, unit: "dona", image: img5, category: "Po‘lat prut kesish stanoklari" },
-  { id: "p6", title: "Fora Group sanoat payalnik", price: 8900000, unit: "dona", image: img6, category: "Po‘lat prut kesish stanoklari" },
+  { id: "p4", title: "PAYALNIK", price: 6900000, unit: "dona", image: img4, category: "Po‘lat prut kesish stanoklari" },
+  { id: "p5", title: "PROFESSIONAL PAYALNIK", price: 315000000, unit: "dona", image: img5, category: "Po‘lat prut kesish stanoklari" },
+  { id: "p6", title: "SANOAT PAYALNIK", price: 8900000, unit: "dona", image: img6, category: "Po‘lat prut kesish stanoklari" },
   // Kompressor
-  { id: "p7", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: kompressor1, category: "Vintli kompressorlar" },
-  { id: "p8", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: kompressor2, category: "Vintli kompressorlar" },
+  { id: "p7", title: "KOMPRESSOR", price: 315000000, unit: "dona", image: kompressor1, category: "Vintli kompressorlar" },
+  { id: "p8", title: "KOMPRESSOR", price: 8900000, unit: "dona", image: kompressor2, category: "Vintli kompressorlar" },
 
   // Yukkotarishustunalari
-  { id: "p9", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: Yukkotarishustunalari1, category: "Yuk ko‘tarish uskunalari" },
-  { id: "p10", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: Yukkotarishustunalari2, category: "Yuk ko‘tarish uskunalari" },
-  { id: "p11", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: Yukkotarishustunalari3, category: "Yuk ko‘tarish uskunalari" },
+  { id: "p9", title: "YUK KO'TARISH USKUNASI", price: 315000000, unit: "dona", image: Yukkotarishustunalari1, category: "Yuk ko‘tarish uskunalari" },
+  { id: "p10", title: "YUK KO'TARISH USKUNASI", price: 8900000, unit: "dona", image: Yukkotarishustunalari2, category: "Yuk ko‘tarish uskunalari" },
+  { id: "p11", title: "YUK KO'TARISH USKUNASI", price: 8900000, unit: "dona", image: Yukkotarishustunalari3, category: "Yuk ko‘tarish uskunalari" },
 
   // Silliqlash Mashinalari
-  { id: "p12", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: silliqlashmashinalari1, category: "Silliqlash mashinalari" },
-  { id: "p13", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: silliqlashmashinalari2, category: "Silliqlash mashinalari" },
-  { id: "p14", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: silliqlashmashinalari3, category: "Silliqlash mashinalari" },
+  { id: "p12", title: "SILLIQLASH MASHINASI", price: 315000000, unit: "dona", image: silliqlashmashinalari1, category: "Silliqlash mashinalari" },
+  { id: "p13", title: "SILLIQLASH MASHINASI", price: 8900000, unit: "dona", image: silliqlashmashinalari2, category: "Silliqlash mashinalari" },
+  { id: "p14", title: "SILLIQLASH MASHINASI", price: 8900000, unit: "dona", image: silliqlashmashinalari3, category: "Silliqlash mashinalari" },
 
   // Armotura bukish
-  { id: "p15", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: armoturabukish1, category: "Armatura bukish" },
-  { id: "p16", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: armoturakesish1, category: "Armatura kesish" },
-  { id: "p17", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: armoturakesish2, category: "Armatura kesish" },
+  { id: "p15", title: "ARMOTURA BUKISH", price: 315000000, unit: "dona", image: armoturabukish1, category: "Armatura bukish" },
+  { id: "p16", title: "ARMOTURA BUKISH", price: 8900000, unit: "dona", image: armoturakesish1, category: "Armatura kesish" },
+  { id: "p17", title: "ARMOTURA BUKISH", price: 8900000, unit: "dona", image: armoturakesish2, category: "Armatura kesish" },
 
   // Asfalt kesgich
-  { id: "p18", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: asfaltkesgich1, category: "Asfalt kesgichlar" },
-  { id: "p19", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: asfaltkesgich2, category: "Asfalt kesgichlar" },
-  { id: "p20", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: asfaltkesgich3, category: "Asfalt kesgichlar" },
+  { id: "p18", title: "ASFALT KESGICH", price: 315000000, unit: "dona", image: asfaltkesgich1, category: "Asfalt kesgichlar" },
+  { id: "p19", title: "ASFALT KESGICH", price: 8900000, unit: "dona", image: asfaltkesgich2, category: "Asfalt kesgichlar" },
+  { id: "p20", title: "ASFALT KESGICH", price: 8900000, unit: "dona", image: asfaltkesgich3, category: "Asfalt kesgichlar" },
 
   // SUV NASOSOLARI
-  { id: "p21", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: suvnasosi1, category: "Suv nasoslari" },
-  { id: "p22", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: suvnasosi2, category: "Suv nasoslari" },
-  { id: "p23", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: suvnasosi3, category: "Suv nasoslari" },
+  { id: "p21", title: "SUV NASOSI", price: 315000000, unit: "dona", image: suvnasosi1, category: "Suv nasoslari" },
+  { id: "p22", title: "SUV NASOSI", price: 8900000, unit: "dona", image: suvnasosi2, category: "Suv nasoslari" },
+  { id: "p23", title: "SUV NASOSI", price: 8900000, unit: "dona", image: suvnasosi3, category: "Suv nasoslari" },
 
   // TRAKTORLAR
-  { id: "p24", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: traktorlar1, category: "Traktorlar" },
-  { id: "p25", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: traktorlar2, category: "Traktorlar" },
+  { id: "p24", title: "TRAKTORLAR", price: 315000000, unit: "dona", image: traktorlar1, category: "Traktorlar" },
+  { id: "p25", title: "TRAKTORLAR", price: 8900000, unit: "dona", image: traktorlar2, category: "Traktorlar" },
 
   // VIBRO
-  { id: "p26", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: vibro1, category: "Zichlash (vibro) apparatlari" },
-  { id: "p27", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: vibro2, category: "Zichlash (vibro) apparatlari" },
-  { id: "p28", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: vibro3, category: "Zichlash (vibro) apparatlari" },
-  { id: "p29", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: vibro4, category: "Zichlash (vibro) apparatlari" },
-  { id: "p30", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: vibro5, category: "Zichlash (vibro) apparatlari" },
+  { id: "p26", title: "VIBRO APPARATI", price: 315000000, unit: "dona", image: vibro1, category: "Zichlash (vibro) apparatlari" },
+  { id: "p27", title: "VIBRO APPARATI", price: 8900000, unit: "dona", image: vibro2, category: "Zichlash (vibro) apparatlari" },
+  { id: "p28", title: "VIBRO APPARATI", price: 315000000, unit: "dona", image: vibro3, category: "Zichlash (vibro) apparatlari" },
+  { id: "p29", title: "VIBRO APPARATI", price: 8900000, unit: "dona", image: vibro4, category: "Zichlash (vibro) apparatlari" },
+  { id: "p30", title: "VIBRO APPARATI", price: 315000000, unit: "dona", image: vibro5, category: "Zichlash (vibro) apparatlari" },
 
-  // VIBRO
-  { id: "p31", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: generatorlar1, category: "Generatorlar" },
-  { id: "p32", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: generatorlar2, category: "Generatorlar" },
-  { id: "p33", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: generatorlar3, category: "Generatorlar" },
-  { id: "p34", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: generatorlar4, category: "Generatorlar" },
-  { id: "p35", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: generatorlar5, category: "Generatorlar" },
-  { id: "p36", title: "BECKER BK10-10-300 havo vintli kompressor.", price: 8900000, unit: "dona", image: generatorlar6, category: "Generatorlar" },
-  { id: "p37", title: "BECKER BK20-10-500 havo vintli kompressor.", price: 315000000, unit: "dona", image: generatorlar7, category: "Generatorlar" },
+  // GENERATOR
+  { id: "p31", title: "GENERATOR", price: 315000000, unit: "dona", image: generatorlar1, category: "Generatorlar" },
+  { id: "p32", title: "GENERATOR", price: 8900000, unit: "dona", image: generatorlar2, category: "Generatorlar" },
+  { id: "p33", title: "GENERATOR", price: 315000000, unit: "dona", image: generatorlar3, category: "Generatorlar" },
+  { id: "p34", title: "GENERATOR", price: 8900000, unit: "dona", image: generatorlar4, category: "Generatorlar" },
+  { id: "p35", title: "GENERATOR", price: 315000000, unit: "dona", image: generatorlar5, category: "Generatorlar" },
+  { id: "p36", title: "GENERATOR", price: 8900000, unit: "dona", image: generatorlar6, category: "Generatorlar" },
+  { id: "p37", title: "GENERATOR", price: 315000000, unit: "dona", image: generatorlar7, category: "Generatorlar" },
 ];
 
 

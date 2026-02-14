@@ -1,65 +1,36 @@
-// src/pages/warranty/Warranty.jsx
+import { useLang } from "../../context/LanguageContext";
 import "./Warranty.css";
 
 export default function Warranty() {
+  const { t } = useLang();
+  const items = t("warranty.items", []);
+
   return (
     <section className="wr">
       <div className="wr-shell">
         <div className="wr-card">
           <div className="wr-top">
-            <h1 className="wr-title">Kafolat</h1>
-            <p className="wr-sub">
-              Uskunalar uchun kafolat shartlari va xizmat ko‘rsatish tartibi.
-              Savolingiz bo‘lsa — bog‘lanish bo‘limi orqali murojaat qiling.
-            </p>
+            <h1 className="wr-title">{t("warranty.title")}</h1>
+            <p className="wr-sub">{t("warranty.sub")}</p>
           </div>
 
           <div className="wr-grid">
-            <div className="wr-item">
-              <div className="wr-k">Kafolat muddati</div>
-              <div className="wr-v">
-                Kafolat muddati mahsulot turiga qarab belgilanadi (odatda 6–24 oy).
+            {items.map((item) => (
+              <div className="wr-item" key={item.k}>
+                <div className="wr-k">{item.k}</div>
+                <div className="wr-v">{item.v}</div>
               </div>
-            </div>
-
-            <div className="wr-item">
-              <div className="wr-k">Nimalar kafolatga kiradi</div>
-              <div className="wr-v">
-                Zavod nuqsonlari, ishlab chiqarishdagi kamchiliklar va normal foydalanishdagi texnik nosozliklar.
-              </div>
-            </div>
-
-            <div className="wr-item">
-              <div className="wr-k">Nimalar kafolatga kirmaydi</div>
-              <div className="wr-v">
-                Noto‘g‘ri ishlatish, mexanik shikast, tashqi aralashuv, noto‘g‘ri kuchlanish,
-                ruxsatsiz ta’mirlash yoki ehtiyot qismlarni almashtirish.
-              </div>
-            </div>
-
-            <div className="wr-item">
-              <div className="wr-k">Kerakli hujjatlar</div>
-              <div className="wr-v">
-                Chek/faktura, kafolat taloni (mavjud bo‘lsa) va mahsulotning seriya raqami.
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="wr-note">
-            <div className="wr-noteTitle">Muhim eslatma</div>
-            <div className="wr-noteText">
-              Kafolat bo‘yicha yakuniy qaror servis tekshiruvi natijasiga ko‘ra chiqariladi.
-              Agar mahsulot kafolat doirasida bo‘lsa, ta’mirlash yoki almashtirish amalga oshiriladi.
-            </div>
+            <div className="wr-noteTitle">{t("warranty.noteTitle")}</div>
+            <div className="wr-noteText">{t("warranty.noteText")}</div>
           </div>
 
           <div className="wr-foot">
-            <a className="wr-btn wr-btnGhost" href="/contact">
-              Bog‘lanish
-            </a>
-            <a className="wr-btn" href="/catalog">
-              Katalogni ko‘rish
-            </a>
+            <a className="wr-btn wr-btnGhost" href="/contact">{t("warranty.contact")}</a>
+            <a className="wr-btn" href="/catalog">{t("warranty.openCatalog")}</a>
           </div>
         </div>
       </div>

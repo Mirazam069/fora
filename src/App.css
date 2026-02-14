@@ -3,7 +3,7 @@
    DM Sans + logo colors
 ========================= */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root{
   /* Logo colors (FORA) */
@@ -19,6 +19,38 @@
   /* Layout */
   --radius: 18px;
   --container: 1440px;
+  --font-main: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+html[data-lang="ru"]{
+  --font-main: "Manrope", "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* RU uchun vizual qalinlikni yumshatish */
+html[data-lang="ru"] h1,
+html[data-lang="ru"] h2,
+html[data-lang="ru"] h3,
+html[data-lang="ru"] h4,
+html[data-lang="ru"] h5,
+html[data-lang="ru"] h6,
+html[data-lang="ru"] strong,
+html[data-lang="ru"] b {
+  font-weight: 700 !important;
+}
+
+html[data-lang="ru"] .nav-catBtn,
+html[data-lang="ru"] .nav-contactBtn,
+html[data-lang="ru"] .nav-langBtn,
+html[data-lang="ru"] .nav-mobileCat,
+html[data-lang="ru"] .hero-btn,
+html[data-lang="ru"] .products-link,
+html[data-lang="ru"] .product-btn,
+html[data-lang="ru"] .footer-cta,
+html[data-lang="ru"] .cta-btn,
+html[data-lang="ru"] .wr-btn,
+html[data-lang="ru"] .dlv-btn,
+html[data-lang="ru"] .fg-sendBtn {
+  font-weight: 600 !important;
 }
 
 *{ box-sizing: border-box; }
@@ -26,7 +58,7 @@ html, body { height: 100%; }
 
 body{
   margin: 0;
-  font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-main);
   /* background: var(--bg); */
   color: var(--text);
 }

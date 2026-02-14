@@ -1,4 +1,3 @@
-// src/components/common/Navbar.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -11,29 +10,23 @@ import {
   IoChevronDownOutline,
 } from "react-icons/io5";
 import NavbarLogo from "../images/foraLogo.png";
+import { CATEGORIES } from "../pages/catalog/catalogData";
+import { useLang } from "../context/LanguageContext";
 import "./Navbar.css";
-
-const CATEGORIES = [
-  "Vintli kompressorlar",
-  "Kultivatorlar",
-  "Traktorlar",
-  "Generatorlar",
-  "Mini ekskavatorlar",
-  "Porshenli kompressorlar",
-  "Armatura bukish",
-  "Armatura kesish",
-  "Po‘lat prut kesish stanoklari",
-  "Silliqlash mashinalari",
-  "Suv nasoslari",
-  "Polietilen quvur payvandlagichlar",
-  "Zichlash (vibro) apparatlari",
-  "Asfalt kesgichlar",
-];
 
 function chunk(arr, size) {
   const out = [];
   for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
   return out;
+}
+
+function normalizeText(value = "") {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’‘`´ʻʼ']/g, "'")
+    .trim();
 }
 
 export default function Navbar() {
@@ -42,14 +35,19 @@ export default function Navbar() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const { lang, setLang, t, tc } = useLang();
   const catWrapRef = useRef(null);
   const navigate = useNavigate();
 
   const filteredCats = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = normalizeText(query);
     if (!q) return CATEGORIES;
-    return CATEGORIES.filter((c) => c.toLowerCase().includes(q));
-  }, [query]);
+    return CATEGORIES.filter((c) => {
+      const base = normalizeText(c);
+      const localized = normalizeText(tc(c));
+      return base.includes(q) || localized.includes(q);
+    });
+  }, [query, tc]);
 
   const catCols = useMemo(() => {
     const cols = chunk(filteredCats, Math.ceil(filteredCats.length / 3));
@@ -57,7 +55,6 @@ export default function Navbar() {
     return cols.slice(0, 3);
   }, [filteredCats]);
 
-  // outside click -> close categories (desktop)
   useEffect(() => {
     function onDown(e) {
       if (!catWrapRef.current) return;
@@ -68,7 +65,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", onDown);
   }, []);
 
-  // ESC -> close overlays
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") {
@@ -81,7 +77,6 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  // lock body scroll on mobile/menu/modal
   useEffect(() => {
     const lock = mobileOpen || contactOpen;
     if (!lock) return;
@@ -103,15 +98,40 @@ export default function Navbar() {
     navigate(`/catalog?category=${encodeURIComponent(name)}`);
   };
 
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    const q = query.trim();
+    if (!q) return;
+    const normalizedQuery = normalizeText(q);
+
+    const matchedCategory = CATEGORIES.find((c) => {
+      const base = normalizeText(c);
+      const localized = normalizeText(tc(c));
+      return (
+        base === normalizedQuery ||
+        localized === normalizedQuery ||
+        base.includes(normalizedQuery) ||
+        localized.includes(normalizedQuery) ||
+        normalizedQuery.includes(base) ||
+        normalizedQuery.includes(localized)
+      );
+    });
+
+    if (matchedCategory) {
+      onPickCategory(matchedCategory);
+      return;
+    }
+
+    setCatOpen(false);
+    setMobileOpen(false);
+    navigate(`/catalog?q=${encodeURIComponent(q)}`);
+  };
+
   return (
     <>
       <header className="nav" role="banner">
         <div className="nav-shell">
-          {/* =========================
-              1-QATOR: LOGO + SEARCH + ACTIONS
-          ========================= */}
           <div className="nav-row">
-            {/* LOGO */}
             <motion.a
               className="nav-logo"
               href="/"
@@ -120,17 +140,12 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <img
-                className="nav-logoImg"
-                src={NavbarLogo}
-                alt="Fora Group logo"
-                draggable="false"
-              />
+              <img className="nav-logoImg" src={NavbarLogo} alt="Fora Group logo" draggable="false" />
             </motion.a>
 
-            {/* SEARCH */}
-            <motion.div
+            <motion.form
               className="nav-search"
+              onSubmit={onSearchSubmit}
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.05 }}
@@ -142,14 +157,12 @@ export default function Navbar() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="nav-searchInput"
-                placeholder="Qidirish..."
-                aria-label="Search"
+                placeholder={t("nav.searchPlaceholder")}
+                aria-label={t("nav.searchAria")}
               />
-            </motion.div>
+            </motion.form>
 
-            {/* DESKTOP ACTIONS */}
             <div className="nav-actions">
-              {/* KATALOG */}
               <div className="nav-catWrap" ref={catWrapRef}>
                 <motion.button
                   type="button"
@@ -163,7 +176,7 @@ export default function Navbar() {
                   <span className="nav-catIcon" aria-hidden="true">
                     <IoGridOutline />
                   </span>
-                  <span>Katalog</span>
+                  <span>{t("nav.catalog")}</span>
                   <motion.span
                     className="nav-catChevron"
                     aria-hidden="true"
@@ -185,7 +198,7 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                     >
                       <div className="nav-catTop">
-                        <div className="nav-catTitle">Kategoriyalar</div>
+                        <div className="nav-catTitle">{t("nav.categories")}</div>
                         <button
                           type="button"
                           className="nav-catClose"
@@ -209,7 +222,7 @@ export default function Navbar() {
                                 whileHover={{ x: 3 }}
                                 whileTap={{ scale: 0.99 }}
                               >
-                                {c}
+                                {tc(c)}
                               </motion.button>
                             ))}
                           </div>
@@ -220,7 +233,6 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              {/* BOGLANISH */}
               <motion.button
                 type="button"
                 className="nav-contactBtn"
@@ -228,22 +240,33 @@ export default function Navbar() {
                 aria-haspopup="dialog"
                 aria-expanded={contactOpen}
                 animate={{ y: [0, -2, 0] }}
-                transition={{
-                  duration: 0.9,
-                  repeat: Infinity,
-                  repeatDelay: 0.6,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 0.9, repeat: Infinity, repeatDelay: 0.6, ease: "easeInOut" }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <span className="nav-contactIcon" aria-hidden="true">
                   <IoCallOutline />
                 </span>
-                <span>Bog‘lanish</span>
+                <span>{t("nav.contact")}</span>
               </motion.button>
 
-              {/* MOBILE BURGER */}
+              <div className="nav-lang" role="group" aria-label="Language switch">
+                <button
+                  type="button"
+                  className={`nav-langBtn ${lang === "uz" ? "active" : ""}`}
+                  onClick={() => setLang("uz")}
+                >
+                  UZ
+                </button>
+                <button
+                  type="button"
+                  className={`nav-langBtn ${lang === "ru" ? "active" : ""}`}
+                  onClick={() => setLang("ru")}
+                >
+                  RU
+                </button>
+              </div>
+
               <motion.button
                 type="button"
                 className="nav-burger"
@@ -256,60 +279,42 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* =========================
-              2-QATOR: SUBNAV (Katalog | line | pagelar)
-          ========================= */}
           <div className="nav-sub" aria-label="Secondary navigation">
             <div className="nav-subLeft">
               <NavLink
                 to="/catalog"
-                className={({ isActive }) =>
-                  isActive ? "nav-subLink active" : "nav-subLink"
-                }
+                className={({ isActive }) => (isActive ? "nav-subLink active" : "nav-subLink")}
                 onClick={() => setCatOpen(false)}
               >
                 <IoGridOutline />
-                <span>Katalog</span>
+                <span>{t("nav.catalog")}</span>
               </NavLink>
-
               <div className="nav-divider" />
-
               <NavLink
                 to="/delivery"
-                className={({ isActive }) =>
-                  isActive ? "nav-subLink active" : "nav-subLink"
-                }
+                className={({ isActive }) => (isActive ? "nav-subLink active" : "nav-subLink")}
               >
-                <span>Yetkazib berish</span>
+                <span>{t("nav.delivery")}</span>
               </NavLink>
-
               <div className="nav-divider" />
-
               <NavLink
                 to="/warranty"
-                className={({ isActive }) =>
-                  isActive ? "nav-subLink active" : "nav-subLink"
-                }
+                className={({ isActive }) => (isActive ? "nav-subLink active" : "nav-subLink")}
               >
-                <span>Kafolat & Servis</span>
+                <span>{t("nav.warranty")}</span>
               </NavLink>
-
               <div className="nav-divider" />
-
               <NavLink
                 to="/contact"
-                className={({ isActive }) =>
-                  isActive ? "nav-subLink active" : "nav-subLink"
-                }
+                className={({ isActive }) => (isActive ? "nav-subLink active" : "nav-subLink")}
               >
-                <span>Aloqa</span>
+                <span>{t("nav.contactPage")}</span>
               </NavLink>
             </div>
           </div>
         </div>
       </header>
 
-      {/* CONTACT MODAL */}
       <AnimatePresence>
         {contactOpen && (
           <motion.div
@@ -325,34 +330,24 @@ export default function Navbar() {
               className="nav-modal"
               role="dialog"
               aria-modal="true"
-              aria-label="Bog‘lanish oynasi"
+              aria-label={t("nav.contactModalAria")}
               initial={{ opacity: 0, y: 18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
               <div className="nav-modalTop">
-                <div className="nav-modalTitle">Bog‘lanish</div>
-                <button
-                  type="button"
-                  className="nav-modalClose"
-                  onClick={() => setContactOpen(false)}
-                  aria-label="Close"
-                >
+                <div className="nav-modalTitle">{t("nav.contact")}</div>
+                <button type="button" className="nav-modalClose" onClick={() => setContactOpen(false)} aria-label="Close">
                   <IoCloseOutline />
                 </button>
               </div>
 
               <div className="nav-modalBody">
-                <p className="nav-modalText">Buyurtma uchun qo‘ng‘iroq qiling:</p>
-
+                <p className="nav-modalText">{t("nav.callForOrder")}</p>
                 <div className="nav-phones">
-                  <a className="nav-phone" href="tel:+998992000077 ">
-                    +998 99 200 00 77 
-                  </a>
-                  <a className="nav-phone" href="tel:+998992000033">
-                    +998 99 200 00 33
-                  </a>
+                  <a className="nav-phone" href="tel:+998992000077">+998 99 200 00 77</a>
+                  <a className="nav-phone" href="tel:+998992000033">+998 99 200 00 33</a>
                 </div>
               </div>
             </motion.div>
@@ -360,15 +355,9 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* MOBILE FULLSCREEN MENU */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            className="nav-mobileOverlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+          <motion.div className="nav-mobileOverlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div
               className="nav-mobile"
               initial={{ x: "100%" }}
@@ -378,14 +367,8 @@ export default function Navbar() {
             >
               <div className="nav-mobileTop">
                 <div className="nav-mobileBrand">
-                  <img
-                    className="nav-logoImg nav-logoImg--sm"
-                    src={NavbarLogo}
-                    alt="Fora Group logo"
-                    draggable="false"
-                  />
+                  <img className="nav-logoImg nav-logoImg--sm" src={NavbarLogo} alt="Fora Group logo" draggable="false" />
                 </div>
-
                 <motion.button
                   type="button"
                   className="nav-mobileClose"
@@ -398,7 +381,24 @@ export default function Navbar() {
                 </motion.button>
               </div>
 
-              <div className="nav-mobileSearch">
+              <div className="nav-mobileLang">
+                <button
+                  type="button"
+                  className={`nav-langBtn ${lang === "uz" ? "active" : ""}`}
+                  onClick={() => setLang("uz")}
+                >
+                  UZ
+                </button>
+                <button
+                  type="button"
+                  className={`nav-langBtn ${lang === "ru" ? "active" : ""}`}
+                  onClick={() => setLang("ru")}
+                >
+                  RU
+                </button>
+              </div>
+
+              <form className="nav-mobileSearch" onSubmit={onSearchSubmit}>
                 <span className="nav-searchIcon" aria-hidden="true">
                   <IoSearchOutline />
                 </span>
@@ -406,14 +406,13 @@ export default function Navbar() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   className="nav-searchInput"
-                  placeholder="Qidirish..."
-                  aria-label="Search"
+                  placeholder={t("nav.searchPlaceholder")}
+                  aria-label={t("nav.searchAria")}
                 />
-              </div>
+              </form>
 
-              {/* KATALOG */}
               <div className="nav-mobileSection">
-                <div className="nav-mobileTitle">Katalog</div>
+                <div className="nav-mobileTitle">{t("nav.catalog")}</div>
                 <div className="nav-mobileCats">
                   {filteredCats.map((c) => (
                     <motion.button
@@ -424,55 +423,26 @@ export default function Navbar() {
                       whileHover={{ x: 4 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span>{c}</span>
+                      <span>{tc(c)}</span>
                     </motion.button>
                   ))}
                 </div>
               </div>
 
-              {/* SAHIFALAR */}
               <div className="nav-mobileSection">
-                <div className="nav-mobileTitle">Sahifalar</div>
-
+                <div className="nav-mobileTitle">{t("nav.pages")}</div>
                 <div className="nav-mobileCats">
-                  <button
-                    className="nav-mobileCat"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      navigate("/delivery");
-                    }}
-                  >
-                    Yetkazib berish
+                  <button className="nav-mobileCat" onClick={() => { setMobileOpen(false); navigate("/delivery"); }}>
+                    {t("nav.delivery")}
                   </button>
-
-                  <button
-                    className="nav-mobileCat"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      navigate("/payment");
-                    }}
-                  >
-                    To‘lov usullari
+                  <button className="nav-mobileCat" onClick={() => { setMobileOpen(false); navigate("/payment"); }}>
+                    {t("nav.paymentMethods")}
                   </button>
-
-                  <button
-                    className="nav-mobileCat"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      navigate("/warranty");
-                    }}
-                  >
-                    Kafolat & Servis
+                  <button className="nav-mobileCat" onClick={() => { setMobileOpen(false); navigate("/warranty"); }}>
+                    {t("nav.warranty")}
                   </button>
-
-                  <button
-                    className="nav-mobileCat"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      navigate("/contact");
-                    }}
-                  >
-                    Aloqa
+                  <button className="nav-mobileCat" onClick={() => { setMobileOpen(false); navigate("/contact"); }}>
+                    {t("nav.contactPage")}
                   </button>
                 </div>
               </div>
@@ -481,24 +451,14 @@ export default function Navbar() {
                 <motion.button
                   type="button"
                   className="nav-contactBtn nav-contactBtn--full"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    openContact();
-                  }}
+                  onClick={() => { setMobileOpen(false); openContact(); }}
                   animate={{ y: [0, -2, 0] }}
-                  transition={{
-                    duration: 0.9,
-                    repeat: Infinity,
-                    repeatDelay: 0.6,
-                    ease: "easeInOut",
-                  }}
+                  transition={{ duration: 0.9, repeat: Infinity, repeatDelay: 0.6, ease: "easeInOut" }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span className="nav-contactIcon" aria-hidden="true">
-                    <IoCallOutline />
-                  </span>
-                  <span>Bog‘lanish</span>
+                  <span className="nav-contactIcon" aria-hidden="true"><IoCallOutline /></span>
+                  <span>{t("nav.contact")}</span>
                 </motion.button>
               </div>
             </motion.div>

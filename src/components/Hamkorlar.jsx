@@ -8,8 +8,10 @@ import sheriklar4 from "../images/sheriklar4.png";
 import sheriklar5 from "../images/sheriklar5.png";
 import sheriklar6 from "../images/sheriklar6.png";
 import sheriklar7 from "../images/sheriklar7.png";
+import { useLang } from "../context/LanguageContext";
 
 export default function Partners() {
+  const { t } = useLang();
   const logos = [
     sheriklar1,
     sheriklar2,
@@ -23,7 +25,7 @@ export default function Partners() {
   return (
     <section className="partners">
       <div className="partners-container">
-        <h2 className="partners-title">Hamkorlarimiz</h2>
+        <h2 className="partners-title">{t("partners.title")}</h2>
 
         <div className="partners-slider">
           <div className="partners-track">

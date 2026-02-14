@@ -1,19 +1,18 @@
-// src/pages/contact/Contact.jsx
 import { useMemo, useState } from "react";
+import { useLang } from "../../context/LanguageContext";
 import "./Contact.css";
 
 function normalizePhone(v) {
-  // faqat raqam va + qoldiramiz
   return v.replace(/[^\d+]/g, "").slice(0, 16);
 }
 
 export default function Contact() {
+  const { t } = useLang();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [state, setState] = useState({ ok: false, msg: "" });
 
-  // ⚠️ Tokenni frontendga qo‘yish xavfli. Hozircha demo.
   const BOT_TOKEN = "BOT_TOKENINGIZ";
   const CHAT_ID = "CHAT_IDINGIZ";
 
@@ -26,18 +25,17 @@ export default function Contact() {
     setState({ ok: false, msg: "" });
 
     if (!name.trim() || !phone.trim()) {
-      setState({ ok: false, msg: "Iltimos, ism va raqamni kiriting." });
+      setState({ ok: false, msg: t("contact.formError") });
       return;
     }
 
     try {
       setLoading(true);
-
       const text =
-        `📩 YANGI MUROJAAT (Fora Group)\n\n` +
-        `👤 Ism: ${name.trim()}\n` +
-        `📞 Telefon: ${phone.trim()}\n\n` +
-        `⏱ Vaqt: ${new Date().toLocaleString()}`;
+        `${t("contact.tgTitle")}\n\n` +
+        `${t("contact.tgName")}: ${name.trim()}\n` +
+        `${t("contact.tgPhone")}: ${phone.trim()}\n\n` +
+        `${t("contact.tgTime")}: ${new Date().toLocaleString()}`;
 
       const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
@@ -47,11 +45,11 @@ export default function Contact() {
 
       if (!res.ok) throw new Error("Telegram error");
 
-      setState({ ok: true, msg: "So‘rovingiz yuborildi. Tez orada bog‘lanamiz ✅" });
+      setState({ ok: true, msg: t("contact.success") });
       setName("");
       setPhone("");
-    } catch (err) {
-      setState({ ok: false, msg: "Xatolik yuz berdi. Qayta urinib ko‘ring." });
+    } catch {
+      setState({ ok: false, msg: t("contact.fail") });
     } finally {
       setLoading(false);
     }
@@ -62,27 +60,21 @@ export default function Contact() {
       <div className="fg-contactShell">
         <div className="fg-contactCard">
           <div className="fg-contactTop">
-            <h1 className="fg-contactTitle">Bog‘lanish</h1>
-            <p className="fg-contactSub">
-              Ism va raqamingizni qoldiring — menejerimiz siz bilan bog‘lanadi.
-            </p>
+            <h1 className="fg-contactTitle">{t("contact.title")}</h1>
+            <p className="fg-contactSub">{t("contact.sub")}</p>
 
             <div className="fg-contactChips" aria-label="info">
-              <div className="fg-chip">
-                Ish vaqti: 09:00–18:00
-              </div>
-              <div className="fg-chip">
-                Javob: odatda 10–30 daqiqa
-              </div>
+              <div className="fg-chip">{t("contact.workTime")}</div>
+              <div className="fg-chip">{t("contact.answerTime")}</div>
             </div>
           </div>
 
           <form className="fg-contactForm" onSubmit={handleSubmit}>
             <label className="fg-field">
-              <span>Ismingiz</span>
+              <span>{t("contact.nameLabel")}</span>
               <input
                 type="text"
-                placeholder="Masalan: Mira'zam"
+                placeholder={t("contact.namePlaceholder")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 autoComplete="name"
@@ -90,7 +82,7 @@ export default function Contact() {
             </label>
 
             <label className="fg-field">
-              <span>Telefon raqam</span>
+              <span>{t("contact.phoneLabel")}</span>
               <input
                 type="tel"
                 placeholder="+998 90 123 45 67"
@@ -101,16 +93,11 @@ export default function Contact() {
             </label>
 
             <button className="fg-sendBtn" type="submit" disabled={!canSend}>
-              {loading ? "Yuborilmoqda..." : "Yuborish"}
+              {loading ? t("contact.sending") : t("contact.send")}
             </button>
 
-            <div className="fg-note">
-              Ma’lumotlaringiz faqat aloqa uchun ishlatiladi. Spam yo‘q.
-            </div>
-
-            {state.msg ? (
-              <div className={`fg-alert ${state.ok ? "ok" : "bad"}`}>{state.msg}</div>
-            ) : null}
+            <div className="fg-note">{t("contact.note")}</div>
+            {state.msg ? <div className={`fg-alert ${state.ok ? "ok" : "bad"}`}>{state.msg}</div> : null}
           </form>
         </div>
       </div>

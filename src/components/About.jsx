@@ -1,5 +1,5 @@
-// src/pages/About/About.jsx
 import { motion } from "framer-motion";
+import { useLang } from "../context/LanguageContext";
 import "./About.css";
 
 const fadeUp = {
@@ -12,67 +12,35 @@ const fadeUp = {
 };
 
 export default function About() {
+  const { t } = useLang();
+  const chips = t("about.chips", []);
+
   return (
     <main className="about-page">
-      {/* HERO */}
       <section className="about-hero">
         <div className="about-container">
-          <motion.span
-            className="about-brand"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-          >
-            FORA GROUP — MA’LUMOT
+          <motion.span className="about-brand" variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+            {t("about.brand")}
           </motion.span>
 
-          <motion.h1
-            className="about-title"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.08}
-          >
-            SANOAT VA QURILISH UCHUN <span className="about-accent">ISHONCHLI</span>{" "}
-            USKUNALAR
+          <motion.h1 className="about-title" variants={fadeUp} initial="hidden" animate="visible" custom={0.08}>
+            {t("about.titlePrefix")} <span className="about-accent">{t("about.titleAccent")}</span> {t("about.titleSuffix")}
           </motion.h1>
 
-          <motion.p
-            className="about-sub"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.18}
-          >
-            FORA GROUP — qurilish va sanoatga kerak bo‘ladigan uskunalarni tanlash, topish
-            va yetkazib berishni soddalashtiradigan jamoa. Bizning maqsad: sifatli texnika,
-            aniq maslahat, tez servis.
+          <motion.p className="about-sub" variants={fadeUp} initial="hidden" animate="visible" custom={0.18}>
+            {t("about.sub")}
           </motion.p>
 
-          <motion.div
-            className="about-heroRow"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.28}
-          >
-            <div className="about-chip">
-              <span className="dot" />
-              Kafolatli mahsulotlar
-            </div>
-            <div className="about-chip">
-              <span className="dot" />
-              Tez yetkazib berish
-            </div>
-            <div className="about-chip">
-              <span className="dot" />
-              Professional maslahat
-            </div>
+          <motion.div className="about-heroRow" variants={fadeUp} initial="hidden" animate="visible" custom={0.28}>
+            {chips.map((chip) => (
+              <div className="about-chip" key={chip}>
+                <span className="dot" />
+                {chip}
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 }
